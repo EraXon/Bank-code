@@ -1,29 +1,141 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include <iostream>
+#include<string>
+using namespace std;
+class Bank{
+public:
+    Bank(int64_t x, float y)
+    {
+            Money=y;
+            CNP=x;
+    }
+    int64_t ReturnCNP()
+    {
+        return CNP;
+    }
+    void AddMoney(int x)
+    {
+        Money+=x;
+    }
 
-# Precompiled Headers
-*.gch
-*.pch
+    int ReturnMoney()
+    {
+        return Money;
+    }
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+    void ExtractMoney(int x)
+    {
+        Money-=x;
+    }
 
-# Fortran module files
-*.mod
-*.smod
+private:
+    int64_t CNP;
+    int Money=0;
+};
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+int main()
+{
+    int lei=0;
+    int exit=0;
+    int lei_extraction=0;
+    int choice;
+    int64_t CNP;
+    string name;
+    Bank Bruma_Bogdan(1234567891011,0);
+    Bank Ion_Popescu(1110987654321,0);
+    while (true)
+    {
+        if(exit!=1){
 
-# Executables
-*.exe
-*.out
-*.app
+        cout <<"Please introduce your name"<<endl;
+        cin>>name;
+        if (name=="Bruma_Bogdan"||name=="Ion_Popescu")
+        {
+            while (true)
+            {
+            if(exit==0)
+            {
+            cout<<"Please input your CNP"<<endl;
+            cin>>CNP;
+            if (name=="Bruma_Bogdan"&&Bruma_Bogdan.ReturnCNP()==CNP)
+            {
+                while (true)
+                {
+                cout<<"What would you like to do ?"<<endl;
+                cout<<"1.See your balance"<<endl<<"2.Deposit money"<<endl<<"3.Extract money"<<endl<<"4.exit"<<endl;
+                cin>>choice;
+                if (choice==1)
+                {
+                    lei=Bruma_Bogdan.ReturnMoney();
+                    cout<<"You have "<<lei<<" lei"<<endl;
+
+                }
+                else if (choice==2)
+                {
+                    cout<<"How many lei would you lei to deposit ?"<<endl;
+                    cin>>lei_extraction;
+                    Bruma_Bogdan.AddMoney(lei_extraction);
+                }
+                else if (choice==3)
+                {
+                    cout<<"How many lei would you lei to extract ?"<<endl;
+                    cin>>lei_extraction;
+                    if (lei_extraction>lei){
+                    cout<<"You don't have enough lei"<<endl;
+                    }
+                    else{
+                        Bruma_Bogdan.ExtractMoney(lei_extraction);
+                    }
+                }
+                    else if(choice==4)
+                    {
+                        exit=1;
+                        break;
+                    }
+                    }
+                }
+
+            else if (name=="Ion_Popescu"&&Ion_Popescu.ReturnCNP()==CNP)
+            {
+            while (true)
+                    {
+                cout<<"What would you like to do"<<endl;
+                cout<<"1.See your balance"<<endl<<"2.Deposit money"<<endl<<"3.Extract money"<<endl<<"4.exit"<<endl;
+                cin>>choice;
+                        if (choice==1)
+                {
+                    lei=Ion_Popescu.ReturnMoney();
+                    cout<<"You have "<<lei<<endl;
+
+                }
+                else if (choice==2)
+                {
+                    cout<<"How many lei would you like to deposit"<<endl;
+                    cin>>lei_extraction;
+                    Ion_Popescu.AddMoney(lei_extraction);
+                }
+                else if (choice==3)
+                {
+                    cout<<"How many lei would you like to extract"<<endl;
+                    cin>>lei_extraction;
+                    Ion_Popescu.ExtractMoney(lei_extraction);
+                }
+                    else if(choice==4)
+                    {
+                        exit=1;
+                        break;
+                    }
+
+                    }
+                }
+            }
+            else
+            {{break;}
+
+            }//a
+    }
+ }
+}
+}
+return 0;
+}
+
